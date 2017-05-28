@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
  */
 	Route::get('/', function () {
         // $books = Book::orderBy('created_at', 'asc')->get();
-	 echo "dupa"
+	
 	 return view('books2', [
 	    //'books' => $books
 		'books' => array("id"-> "1", "author"->"a1", "title"->"title")

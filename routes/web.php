@@ -22,6 +22,7 @@ Route::get('/', function () {
 	$books = Book::all();//->get();
  return view('books', [
 	'books' => $books
+	
 ]);	
 
 });
@@ -42,6 +43,27 @@ Route::post('/book', function (Request $request) {
 	$book->author = $request ->author;
 	$book->save();
 
+	return redirect('/');
+});
+
+Route::post('book/{id}/edit', function (Request $request) {
+    	  $validator = Validator::make($request->all(), [
+	   'title' => 'required|max:50',
+	   'author' => 'required|max:50',
+	]);
+ 		if ($validator->fails()) {
+        	  return redirect('/')
+                    ->withInput()
+                    ->withErrors($validator);
+    	}
+    Book::findOrFail($id)->edit();
+	$book->id = $request ->id;
+	$book->title = $request ->title;
+	$book->author = $request ->author;
+	$book->update();
+	##Book::findOrFail($id)->edit();
+	
+	
 	return redirect('/');
 });
 

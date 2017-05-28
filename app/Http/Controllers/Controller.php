@@ -10,4 +10,16 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+	
+	
+	public function update($id)
+   {
+        $bookUpdate=Request::all();
+        $book=  Controller::find($id);
+        $book->update($bookUpdate);
+        return redirect('/');
+   }
+	
+	
+	
 }
