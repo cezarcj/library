@@ -49,18 +49,23 @@
 				
 				<form action="/book/edit/{{ $book->id }}" method="POST" class="form-horizontal">
 					{{ csrf_field() }}
+					
 				<td>
-				
-				<button type="submit" class="btn btn-default"> <i class="fa fa-plus"></i>Edit book</button></td></tr>
-				
+				<div class = "form-group">
+				<button type="submit" class="btn btn-default">
+				<i class="fa fa-plus"></i> Edit book</button></td></tr>
+				</div>			
 				</tr>
 				</form>
 			@endforeach
 				</tbody>	
+				
 				<div class = "form-group">
 					<div class="col-sm-6">
                     <input type="text" name="title" value="edited title" id="book-name" class="form-control">
 					<input type="text" name="author" value="edited book" id="book-name" class="form-control">
+					
+				
                 </div>
 				
 				</div>
