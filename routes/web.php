@@ -56,12 +56,12 @@ Route::post('book/{id}/edit', function (Request $request) {
                     ->withInput()
                     ->withErrors($validator);
     	}
-    Book::findOrFail($id)->edit();
-	$book->id = $request ->id;
-	$book->title = $request ->title;
-	$book->author = $request ->author;
-	$book->update();
-	##Book::findOrFail($id)->edit();
+
+#	$book->id = $request ->id;
+	$book->title = $request ->input('title');
+	$book->author = $request ->input('author');
+	$book->save();
+	#Book::findOrFail($id)->edit();
 	
 	
 	return redirect('/');

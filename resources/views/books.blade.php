@@ -15,7 +15,7 @@
     	  @if (count($books) > 0) 
           <div class="panel panel-default">
           <div class="panel-heading">
-                Edit Book
+               
           </div>
 
             <div class="panel-body">
@@ -43,27 +43,27 @@
 			
            <td> <button>Delete Book</button> </td>
            </td>
+		
+              </form>
+			  </form>
+				
+				<form action="/book/edit/{{ $book->id }}" method="POST" class="form-horizontal">
+					{{ csrf_field() }}
+				<td>
+				
+				<button type="submit" class="btn btn-default">Edit book</button></td></tr>
 		</tr>
-            
-						  </form>
-						  </tbody>
-			<form action="/book/edit/{{ $book->id }}" method="POST">
-            {{ csrf_field() }}
-        		
-         <td> <td> <button>Edit Book</button> </td> 
-           </td>
-		</tr>
-             @endforeach
-			 
-			 <div class="col-sm-6">
-                    <input type="text" name="title" value="new title" id="book-name" class="form-control">
-					<input type="text" name="author" value="new author" id="book-name" class="form-control">
+				</form>
+				@endforeach
+				</tbody>	
+					<div class="col-sm-6">
+                    <input type="text" name="edited_title" value="edited title" id="book-name" class="form-control">
+					<input type="text" name="edited_author" value="edited book" id="book-name" class="form-control">
                 </div>
-            </div>
-						  </form>
+				</div>
+			<div>
 						
-			            </div>
-    </div>
+			           
     @endif
     @endsection
 		
