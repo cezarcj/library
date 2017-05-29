@@ -18,12 +18,12 @@ use Illuminate\Http\Request;
  //   return view('books2');
 //});
 
-Route::get('/', function () {
-	$books = Book::all();//->get();
- return view('books', [
-	'books' => $books
+		Route::get('/', function () {
+			$books = Book::all();//->get();
+		return view('books', [
+			'books' => $books
 	
-]);	
+		]);	
 
 });
 
@@ -58,13 +58,17 @@ Route::post('book/edit/{id}', function (Request $request) {
                     ->withInput()
                     ->withErrors($validator);
     	}*/
+	
 	$book = new Book;
-	$book->title = $request ->title;
-	$book->author = $request ->author;
-	$book->id = $request ->id;
-	$book->save();
-	Book::where('id', $book->id)->update(['title'=>'$book->title']);
-	Book::where('id', $book->id)->update(['author'=>'$book->author']);
+	$book->id = $request->id;
+	$book->title = $request->title;
+	$book->author = $request->author;
+	#$book->save();
+	
+	#Book::table{'books')->where('id', $book->id)->update(['title'=>$book->title]);
+	#Book::table{'books')->where('id', $book->id)->update(['author'=>$book->author]);
+	Book::where('id', $book->id)->update(['title'=>$book->title]);
+	Book::where('id', $book->id)->update(['author'=>$book->author]);
 	#Book::update('update book set title = ? where id = ?',[$book->edited_title,$id]);
 	#Book::update('update book set author = ? where id = ?',[$book->edited_author,$id]);
 #	$book->id = $request ->id;
