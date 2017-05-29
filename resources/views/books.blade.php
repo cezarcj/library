@@ -27,7 +27,8 @@
 				</thead>
 				<!-- Table Body -->
 				<tbody>
-				@foreach ($books as $book)
+
+@foreach ($books as $book)
 					<tr>
 						<!-- Book Name -->
 						<td>{{ str_limit($book->title,10),"..." }}</td>
@@ -45,25 +46,27 @@
 							<form action="/book/edit/{{ $book->id }}" method="POST" class="form-horizontal">
 							{{ csrf_field() }}
 					
-						
+							<td>
+								<input type="text" name="title" value="edited title" id="book-name" class="form-control">
+							</td>
+							<td>
+								<input type="text" name="author" value="edited book" id="book-name" class="form-control">
+							</td>
 							
 							<td><button type="submit" class="btn btn-default">
 							 Edit book</button></td></td></tr>
 							
-							
+							</form>
 						</td>
 					</tr>
 					
 				@endforeach
 					
 				
-				<div class = "form-group">
-					<div class="col-sm-6">
-                    <input type="text" name="title" value="edited title" id="book-name" class="form-control">
-					<input type="text" name="author" value="edited book" id="book-name" class="form-control">
-                </div>
+				
+
 				</tbody>
-				</div>
+				
 				</form>
 				</div>
 			<div>
