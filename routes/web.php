@@ -46,21 +46,29 @@ Route::post('/book', function (Request $request) {
 	return redirect('/');
 });
 
-Route::post('book/{id}/edit', function (Request $request) {
-    	  $validator = Validator::make($request->all(), [
+Route::post('book/edit/{id}', function (Request $request) {
+	
+	 $validator = Validator::make($request->all(), [
 	   'title' => 'required|max:50',
 	   'author' => 'required|max:50',
 	]);
- 		if ($validator->fails()) {
+		if ($validator->fails()) {
         	  return redirect('/')
                     ->withInput()
                     ->withErrors($validator);
     	}
-
-#	$book->id = $request ->id;
-	$book->title = $request ->input('title');
-	$book->author = $request ->input('author');
+	$book = new Book;
+	$book = Book::find($book->id);
+	$book->title = $request ->title;
+	$book->author = $request ->author;
 	$book->save();
+	#Book::where('id', $book->id)->update(['title'=>$book->title]);
+	#Book::where('id', $book->id)->update(['author'=>$book->author]);
+	#Book::update('update book set title = ? where id = ?',[$book->edited_title,$id]);
+	#Book::update('update book set author = ? where id = ?',[$book->edited_author,$id]);
+#	$book->id = $request ->id;
+	
+	
 	#Book::findOrFail($id)->edit();
 	
 	
